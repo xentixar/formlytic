@@ -1,0 +1,66 @@
+.xen-select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    font-family: Arial, sans-serif;
+}
+
+.xen-searchable {
+    display: none;
+}
+
+.xen-select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.xen-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    box-sizing: border-box;
+}
+
+.xen-options {
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.xen-options::-webkit-scrollbar {
+    display: none;
+}
+
+.xen-option {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.2s;
+}
+
+.xen-option:hover {
+    background-color: #f0f0f0;
+}
+
+.xen-option[data-selected="true"] {
+    background-color: #007bff;
+    color: white;
+}
