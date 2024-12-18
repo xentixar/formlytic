@@ -71,4 +71,54 @@
         wrapper.appendChild(optionsDiv);
         selectElement.parentNode.insertBefore(wrapper, selectElement);
     });
+
+    document.querySelectorAll('input[prefix]').forEach(function (element) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'xen-input-wrapper';
+
+        const prefixSpan = document.createElement('span');
+        prefixSpan.className = 'xen-input-prefix';
+        const prefixContent = element.getAttribute('prefix');
+        prefixSpan.innerHTML = prefixContent;
+
+        const prefix = prefixSpan.textContent;
+
+        element.parentNode.insertBefore(wrapper, element);
+
+        wrapper.appendChild(prefixSpan);
+        wrapper.appendChild(element);
+
+        element.closest('form')?.addEventListener('submit', function () {
+            if (!element.value.startsWith(prefix)) {
+                element.value = prefix + element.value;
+            }
+        });
+    });
+
+    document.querySelectorAll('input[suffix]').forEach(function (element) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'xen-input-wrapper';
+
+        const suffixSpan = document.createElement('span');
+        suffixSpan.className = 'xen-input-suffix';
+        const suffixContent = element.getAttribute('suffix');
+        suffixSpan.innerHTML = suffixContent;
+
+        const suffix = suffixSpan.textContent;
+
+        element.parentNode.append(wrapper, element);
+
+        wrapper.appendChild(element);
+        wrapper.appendChild(suffixSpan);
+
+        element.style.paddingRight = `${suffixSpan.offsetWidth + 10}px`;
+
+        element.closest('form')?.addEventListener('submit', function () {
+            if (!element.value.endsWith(suffix)) {
+                element.value = element.value + suffix;
+            }
+        });
+    });
+
+
 })();

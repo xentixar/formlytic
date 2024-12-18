@@ -64,3 +64,43 @@
     background-color: #007bff;
     color: white;
 }
+
+.xen-input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.xen-input-prefix {
+    padding: 9px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.xen-input-suffix {
+    padding: 9px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.xen-input-wrapper input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+}
+
+.xen-input-wrapper input:focus {
+    box-shadow: none;
+}
