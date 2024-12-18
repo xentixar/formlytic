@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formlytic - Dynamic Form Elements</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .example-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .example-link a {
+            display: inline-block;
+            padding: 0.1rem 0.8rem;
+            font-size: 1rem;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .example-link a:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Formlytic</h1>
+        <p>Enhance your forms with dynamic features effortlessly.</p>
+    </header>
+    <div class="container">
+        <section class="hero">
+            <h1>Welcome to Formlytic</h1>
+            <p>Formlytic is a UI library kit that allows you to transform standard form elements into advanced, dynamic,
+                and searchable components with ease.</p>
+        </section>
+        <section class="features">
+            <div class="feature">
+                <h3>Dynamic Selects</h3>
+                <p>Transform your basic <code>&lt;select&gt;</code> elements into searchable dropdowns with just an
+                    attribute.</p>
+            </div>
+            <div class="feature">
+                <h3>Prefix and Suffix Support</h3>
+                <p>Easily add prefixes and suffixes to input fields for better context and usability.</p>
+            </div>
+            <div class="feature">
+                <h3>Lightweight and Easy to Use</h3>
+                <p>No complex setup. Just include the library and enhance your form elements instantly.</p>
+            </div>
+        </section>
+        <section>
+            <h2>How It Works</h2>
+            <p>Simply add the <code>searchable="true"</code> attribute to your <code>&lt;select&gt;</code> elements, or
+                use
+                attributes for prefix and suffix, and the library will handle the rest!</p>
+            <pre>
+&lt;select searchable="true"&gt;
+    &lt;option value="option-1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="option-2"&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+            </pre>
+        </section>
+        <div class="example-link">
+            <a href="examples/index.html">View Examples</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Formlytic. All rights reserved.</p>
+        <p><a href="https://github.com/xentixar/formlytic" style="color: #fff;">GitHub Repository</a></p>
+    </footer>
+</body>
+
+</html>
