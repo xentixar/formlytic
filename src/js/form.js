@@ -52,12 +52,33 @@
             }
         });
 
+        let activeIndex = -1;
+
         searchInput.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                const firstVisibleOption = optionsDiv.querySelector('.xen-option:not([style*="display: none"])');
-                if (firstVisibleOption) {
-                    const selectedValue = firstVisibleOption.dataset.value;
-                    const selectedText = firstVisibleOption.textContent;
+            const visibleOptions = Array.from(optionsDiv.querySelectorAll('.xen-option:not([style*="display: none"])'));
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                activeIndex = (activeIndex + 1) % visibleOptions.length;
+                visibleOptions.forEach((option, index) => {
+                    option.classList.toggle('active', index === activeIndex);
+                });
+                if (activeIndex >= 0) {
+                    visibleOptions[activeIndex].scrollIntoView({ block: 'nearest' });
+                }
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                activeIndex = (activeIndex - 1 + visibleOptions.length) % visibleOptions.length;
+                visibleOptions.forEach((option, index) => {
+                    option.classList.toggle('active', index === activeIndex);
+                });
+                if (activeIndex >= 0) {
+                    visibleOptions[activeIndex].scrollIntoView({ block: 'nearest' });
+                }
+            } else if (event.key === 'Enter') {
+                event.preventDefault();
+                if (activeIndex >= 0 && visibleOptions[activeIndex]) {
+                    const selectedValue = visibleOptions[activeIndex].dataset.value;
+                    const selectedText = visibleOptions[activeIndex].textContent;
 
                     selectElement.value = selectedValue;
                     searchInput.value = selectedText;
@@ -66,7 +87,6 @@
                 }
             }
         });
-
 
         wrapper.appendChild(searchInput);
         wrapper.appendChild(optionsDiv);
@@ -80,6 +100,7 @@
 
         selectElement.parentNode.insertBefore(wrapper, selectElement);
     });
+
 
     document.querySelectorAll('input[prefix]').forEach(function (element) {
         const wrapper = document.createElement('div');
@@ -126,6 +147,4 @@
             }
         });
     });
-
-
 })();
