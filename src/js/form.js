@@ -67,8 +67,17 @@
             }
         });
 
+
         wrapper.appendChild(searchInput);
         wrapper.appendChild(optionsDiv);
+
+        if (selectElement.getAttribute('suffixIcon')) {
+            const suffixIcon = document.createElement('i');
+            suffixIcon.className += selectElement.getAttribute('suffixIcon');
+            suffixIcon.className += ' xen-select-suffix-icon';
+            wrapper.appendChild(suffixIcon);
+        }
+
         selectElement.parentNode.insertBefore(wrapper, selectElement);
     });
 
@@ -110,8 +119,6 @@
 
         wrapper.appendChild(element);
         wrapper.appendChild(suffixSpan);
-
-        element.style.paddingRight = `${suffixSpan.offsetWidth + 10}px`;
 
         element.closest('form')?.addEventListener('submit', function () {
             if (!element.value.endsWith(suffix)) {
