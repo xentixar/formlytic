@@ -6,6 +6,8 @@
     max-width: 400px;
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .xen-searchable {
@@ -23,12 +25,28 @@
     background-color: white;
 }
 
+.xen-search-container {
+    position: relative;
+    width: 100%;
+}
+
 .xen-search {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    padding: 10px 12px;
+    padding-right: 40px;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
     box-sizing: border-box;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease;
+}
+
+.xen-search:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    background-color: white;
 }
 
 .xen-options {
@@ -37,16 +55,32 @@
     top: 100%;
     left: 0;
     right: 0;
-    border: 1px solid #ccc;
-    max-height: 200px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    max-height: 250px;
     overflow-y: auto;
     background-color: white;
     display: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 4px;
 }
 
 .xen-options::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+}
+
+.xen-options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.xen-options::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.xen-options::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
 .xen-select-suffix-icon {
@@ -54,31 +88,95 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #333;
+    color: #666;
     padding: 10px;
     background-color: white;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .xen-option {
-    padding: 10px;
-    font-size: 16px;
+    padding: 10px 12px;
+    font-size: 14px;
     cursor: pointer;
     background-color: white;
-    transition: background-color 0.2s;
+    transition: all 0.15s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.xen-option:last-child {
+    border-bottom: none;
 }
 
 .xen-option.active {
-    background-color: #f0f0f0;
-    cursor: pointer;
+    background-color: #f0f7ff;
+    color: #4a90e2;
 }
 
 .xen-option:hover {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
 }
 
-.xen-option[data-selected="true"] {
-    background-color: #007bff;
-    color: white;
+.xen-option.selected {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.xen-option.selected:hover {
+    background-color: #d2e3fc;
+}
+
+.xen-selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 8px;
+    min-height: 38px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.xen-selected-tags:focus-within {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.xen-selected-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e8f0fe;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    color: #1a73e8;
+    transition: all 0.15s ease;
+}
+
+.xen-selected-tag:hover {
+    background-color: #d2e3fc;
+}
+
+.xen-remove-tag {
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1a73e8;
+    line-height: 1;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.15s ease;
+}
+
+.xen-remove-tag:hover {
+    background-color: rgba(26, 115, 232, 0.1);
+    color: #d93025;
 }
 
 .xen-input-wrapper {
@@ -89,34 +187,37 @@
 
 .xen-input-prefix {
     padding: 10px;
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #666;
+    border: 1px solid #e0e0e0;
     border-right: none;
-    border-radius: 5px 0 0 5px;
-    font-size: 16px;
+    border-radius: 6px 0 0 6px;
+    font-size: 14px;
     white-space: nowrap;
 }
 
 .xen-input-suffix {
     padding: 10px;
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #666;
+    border: 1px solid #e0e0e0;
     border-left: none;
-    border-radius: 0 5px 5px 0;
-    font-size: 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
     white-space: nowrap;
 }
 
 .xen-input-wrapper input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
 .xen-input-wrapper input:focus {
-    box-shadow: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
